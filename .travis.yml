@@ -30,7 +30,9 @@ before_script:
 script:
  - cabal install --only-dependencies
  - cabal build
+ - cat dist/setup-config || echo no config
  - cabal build
+ - cat dist/setup-config || echo no config
  - cabal install --enable-documentation
  - cabal sdist
 
