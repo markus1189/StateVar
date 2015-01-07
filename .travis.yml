@@ -1,12 +1,5 @@
 env:
- - CABALVER=1.16 GHCVER=7.0.4
- - CABALVER=1.16 GHCVER=7.2.2
- - CABALVER=1.16 GHCVER=7.4.2
- - CABALVER=1.16 GHCVER=7.6.3
- - CABALVER=1.18 GHCVER=7.8.3
- - CABALVER=1.20 GHCVER=7.8.4
  - CABALVER=1.22 GHCVER=7.10.1
- - CABALVER=head GHCVER=head
 
 matrix:
   allow_failures:
@@ -26,15 +19,12 @@ before_script:
  - ghc --version
  - ghc-pkg list
 
-
 script:
  - cabal sandbox init
- - cabal install --only-dependencies
- - cabal build
- - cat dist/setup-config || echo no config
- - cabal build
- - cat dist/setup-config || echo no config
- - cabal install --enable-documentation
+ - cabal -v2 install --only-dependencies
+ - cabal -v2 build
+ - cabal -v2 build
+ - cabal -v2 install --enable-documentation
  - cabal sdist
 
 after_script:
