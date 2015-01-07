@@ -26,6 +26,7 @@ before_script:
  - ghc --version
  - ghc-pkg list
 
+
 script:
  - cabal build
  - cabal build
