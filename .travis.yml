@@ -28,6 +28,7 @@ before_script:
 
 
 script:
+ - cabal sandbox init
  - cabal install --only-dependencies
  - cabal build
  - cat dist/setup-config || echo no config
